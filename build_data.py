@@ -43,12 +43,12 @@ def main():
     # Save vocab
     write_vocab(vocab, config.filename_words)
     write_vocab(vocab_tags, config.filename_tags)
-
+    print('Wrote vocab')
     # Trim GloVe Vectors
     vocab = load_vocab(config.filename_words)
     export_trimmed_wordvec_vectors(vocab, config.filename_wordvec,
                                 config.filename_wordvec_trimmed)
 
-
+    print('trimmed vocab')
 if __name__ == "__main__":
     main()

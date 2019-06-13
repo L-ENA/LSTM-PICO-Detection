@@ -37,13 +37,13 @@ class Config():
                     help='l2 regularization coefficient')
 
         # data and results paths
-        parser.add_argument('--dir_output', default='test', type=str,
+        parser.add_argument('--dir_output', default='/home/lena/Dokumente/Master/dissertation/Data/output', type=str,
                     help='directory for output')
-        parser.add_argument('--data_root', default='/data/medg/misc/jindi/nlp/PICO', type=str,
+        parser.add_argument('--data_root', default='/home/lena/Dokumente/Master/dissertation/Data/splitted', type=str,
                     help='directory for output')
-        parser.add_argument('--filename_wordvec_trimmed', default='data/word2vec_pubmed.trimmed.txt', 
+        parser.add_argument('--filename_wordvec_trimmed', default='/home/lena/Dokumente/Master/dissertation/Data/word2vec_pubmed.trimmed.txt',
                     type=str, help='directory for trimmed word embeddings file')
-        parser.add_argument('--filename_wordvec', default='/data/medg/misc/jindi/nlp/embeddings/word2vec/wikipedia-pubmed-and-PMC-w2v.txt', 
+        parser.add_argument('--filename_wordvec', default='/home/lena/Dokumente/Master/dissertation/Data/embPmcPlus.txt',
                     type=str, help='directory for original word embeddings file')
 
         # model hyperparameters
@@ -72,6 +72,7 @@ class Config():
 
         # dataset
         self.filename_dev = os.path.join(self.data_root, 'PICO_dev.txt')
+        print('path to dev.txt is '+ self.filename_dev)
         self.filename_test = os.path.join(self.data_root, 'PICO_test.txt')
         self.filename_train = os.path.join(self.data_root, 'PICO_train.txt')
 
