@@ -250,7 +250,7 @@ class HANNModel(BaseModel):
             logits, trans_params = self.sess.run(
                     [self.logits, self.trans_params], feed_dict=fd)
 
-            # iterate over the sentences because no batching in vitervi_decode
+            # iterate over the sentences because no batching in viterbi_decode
             for logit, document_length in zip(logits, document_lengths):
                 logit = logit[:document_length] # keep only the valid steps
                 viterbi_seq, viterbi_score = tf.contrib.crf.viterbi_decode(
@@ -304,8 +304,8 @@ class HANNModel(BaseModel):
                 prog.update(i + 1, [("train loss", train_loss), ("accuracy", acc)])
 
             # tensorboard
-            if i % 10 == 0:
-                self.file_writer.add_summary(summary, epoch*nbatches + i)
+            #if i % 10 == 0:
+            self.file_writer.add_summary(summary, epoch*nbatches + i)
 
         metrics = self.run_evaluate(dev, report=True)
         msg = " - ".join(["{} {:04.3f}".format(k, v)

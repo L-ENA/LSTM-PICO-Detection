@@ -82,7 +82,9 @@ class BaseModel(object):
         """Saves session = weights"""
         if not os.path.exists(self.config.dir_model):
             os.makedirs(self.config.dir_model)
+            print('made dir for saving')
         self.saver.save(self.sess, self.config.dir_model)
+        print('saved in ' + self.config.dir_model)
 
 
     def close_session(self):
@@ -124,7 +126,7 @@ class BaseModel(object):
             # early stopping and saving best parameters
             if score >= best_score:
                 nepoch_no_imprv = 0
-                self.save_session()
+                self.save_session()     ##save in outputs file
                 best_score = score
                 self.logger.info("- new best score!")
             else:

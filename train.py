@@ -12,9 +12,12 @@ def main():
     # build model
     model = HANNModel(config)
     model.build()
+    ###############################################comment this if model is trained from scratch
+    config.restore = True
     if config.restore:
-        model.restore_session("results/test/model.weights/") # optional, restore weights
-    # model.reinitialize_weights("proj")
+        model.restore_session("/home/lena/Dokumente/Master/dissertation/Data/output/model.weights") # optional, restore weights
+    model.reinitialize_weights("proj")#reinitialise for this scope
+    #####################################################################
 
     # create datasets
     dev   = Dataset(config.filename_dev, config.processing_word,
